@@ -46,6 +46,7 @@ javac ../../tsql.java
 ./configure_hive.sh
 ./configure_pm.sh
 ./ontology.sh
+./reconfigure-i2b2.sh
 ./disable-update-cells.sh
 ./post-install.sh
 

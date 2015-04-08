@@ -58,7 +58,7 @@ public class tsql
               stmt.execute(SQL);
 
 
-              System.out.println(fileName + " completed.");
+              System.out.println("  " + fileName + " completed.");
 
 
               //ResultSet rs = stmt.executeQuery(SQL);

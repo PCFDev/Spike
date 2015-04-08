@@ -70,6 +70,7 @@ export I2B2_DB_PM_SERVER=${I2B2_DB_SERVER}
 export I2B2_DB_PM_USER=i2b2pm
 export I2B2_DB_PM_PASSWORD=${I2B2_DB_PASSWORD}
 export I2B2_DB_PM_DATABASE=i2b2pm
+export I2B2_DB_PM_JDBC_URL=jdbc:sqlserver://${I2B2_DB_PM_SERVER}:1433;databaseName=${I2B2_DB_PM_DATABASE}
 
 
 #ITL Configuration for the i2b2 Hive
@@ -110,11 +111,34 @@ export I2B2_DB_SHRINE_ONT_DATASOURCE_NAME=OntologyShrineDS
 
 
 #ITL Configuration for the i2b2 CRC cell
+export I2B2_DB_CRC_SERVER=${I2B2_DB_SERVER}
 export I2B2_DB_CRC_USER=i2b2demodata
+export I2B2_DB_CRC_PASSWORD=${I2B2_DB_PASSWORD}
 export I2B2_DB_CRC_DATABASE=i2b2demodata
+export I2B2_DB_CRC_JDBC_URL=jdbc:sqlserver://${I2B2_DB_CRC_SERVER}:1433;databaseName=${I2B2_DB_CRC_DATABASE}
 
 #Java DataSource name used by the i2b2 CRC cell
 export I2B2_DB_CRC_DATASOURCE_NAME=QueryToolDemoDS
+
+
+#ITL Configuration for the i2b2 IM cell
+export I2B2_DB_IM_SERVER=${I2B2_DB_SERVER}
+export I2B2_DB_IM_USER=i2b2imdata
+export I2B2_DB_IM_PASSWORD=${I2B2_DB_PASSWORD}
+export I2B2_DB_IM_DATABASE=i2b2imdata
+export I2B2_DB_IM_JDBC_URL=jdbc:sqlserver://${I2B2_DB_IM_SERVER}:1433;databaseName=${I2B2_DB_IM_DATABASE}
+
+
+
+#ITL Configuration for the i2b2 WORK cell
+export I2B2_DB_WORK_SERVER=${I2B2_DB_SERVER}
+export I2B2_DB_WORK_USER=i2b2workdata
+export I2B2_DB_WORK_PASSWORD=${I2B2_DB_PASSWORD}
+export I2B2_DB_WORK_DATABASE=i2b2workdata
+export I2B2_DB_WORK_JDBC_URL=jdbc:sqlserver://${I2B2_DB_WORK_SERVER}:1433;databaseName=${I2B2_DB_WORK_DATABASE}
+
+
+
 
 
 
