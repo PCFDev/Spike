@@ -19,7 +19,7 @@ echo "[shrine/install.sh] begin."
 #########
 rm ~/shrine.rc
 cp shrine.rc ~/shrine.rc
-cp ../common.rc ~/common.rc
+cp ../../common.rc ~/common.rc
 cp shrine-aliases.sh  ~/shrine-aliases.sh
 chmod 640 ~/common.rc
 chmod 640 ~/shrine.rc
@@ -59,7 +59,7 @@ cd work;
 du -hs
 cd ..
 
-rm -rf work
+#rm -rf work
 
 ##########
 echo "[shrine/install.sh] Disk Space Free After Install Cleanup"

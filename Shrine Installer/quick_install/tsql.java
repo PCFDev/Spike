@@ -14,6 +14,7 @@ public class tsql
        {
          String SQL = "";
          String fileName = "";
+         String printSQL = "no";
          try
          {
 
@@ -27,6 +28,8 @@ public class tsql
               String password = arg[3];
               String database = arg[4];
 
+              if(arg.length > 5)
+                printSQL = arg[5];
 
               SQL = fileContentsToString(fileName);
 
@@ -55,7 +58,7 @@ public class tsql
               stmt.execute(SQL);
 
 
-              System.out.println(fileName + " Done.");
+              System.out.println(fileName + " completed.");
 
 
               //ResultSet rs = stmt.executeQuery(SQL);
@@ -70,7 +73,10 @@ public class tsql
          catch(SQLException e)
          {
               System.out.println("SQL: " + e.getMessage());
-              //System.out.println("Query: " + SQL);
+
+              if(printSQL != "no")
+                System.out.println("Query: " + SQL);
+
               System.out.println(fileName + " exited with Errors.");
               System.exit(0);
          }
@@ -121,6 +127,9 @@ public class tsql
                   }
               }
           }
+          else
+            throw new Exception("File not found: " + file);
+
       }
       catch (Exception e)
       {

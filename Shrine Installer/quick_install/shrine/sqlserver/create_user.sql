@@ -1,15 +1,3 @@
-use master
-
-
--- Create the database
-
-IF EXISTS (SELECT name FROM master.sys.databases WHERE name = N'SHRINE_DB_NAME')
-  BEGIN
-    drop database [SHRINE_DB_NAME];
-  END
-
-create database [SHRINE_DB_NAME];
-
 -- Create a SQL user for query history
 --grant all privileges on shrine_query_history.* to SHRINE_MYSQL_USER@SHRINE_MYSQL_HOST identified by 'SHRINE_MYSQL_PASSWORD';
 
