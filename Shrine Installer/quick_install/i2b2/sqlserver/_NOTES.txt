@@ -1,0 +1,69 @@
+#JAVA
+http://blogs.msdn.com/b/brian_swan/archive/2011/03/02/getting-started-with-the-sql-server-jdbc-driver.aspx
+
+
+#PHP
+#http://mx2.php.net/manual/en/function.mssql-query.php
+
+
+
+
+
+#freetds
+#http://www.freetds.org/
+#http://pkgs.org/centos-6/epel-i386/freetds-0.91-2.el6.i686.rpm.html
+#http://m-aamirmalik.blogspot.com/2011/02/freetds-installation-on-centos.html
+
+
+yum install unixODBC
+yum install unixODBC-devel
+yum install glibc-utils.i686
+
+wget http://dl.fedoraproject.org/pub/epel/6/i386/freetds-0.91-2.el6.i686.rpm
+wget http://dl.fedoraproject.org/pub/epel/6/i386/freetds-devel-0.91-2.el6.i686.rpm
+
+rpm -i freetds-0.91-2.el6.i686.rpm
+rpm -i freetds-devel-0.91-2.el6.i686.rpm
+
+
+#python
+#http://pymssql.org/en/stable/intro.html
+
+#yum install gcc
+#yum install python-devel.i686
+#yum install python-setuptools
+#sudo easy_install pip
+#pip install cython
+#pip install pymssql
+
+
+###MAC
+#brew install freetds
+#sudo easy_install pip
+#sudo -H pip install cython
+#sudo -H pip install pymssql
+
+
+#TODO
+need to figure out what i2b2-aliases.sh is doing / how it's being used
+
+#NOTE: demo ontology url
+#https://open.med.harvard.edu/svn/shrine/releases/1.18.2/
+#https://open.med.harvard.edu/svn/shrine/releases/1.18.2/ontology/SHRINE_Demo_Downloads/ShrineDemo.sql
+
+#NOTE mysql scripts shrine/from mysql.sh
+#https://open.med.harvard.edu/svn/shrine/releases/1.18.2/code/adapter/src/main/resources/adapter.sql
+#https://open.med.harvard.edu/svn/shrine/releases/1.18.2/code/broadcaster-aggregator/src/main/resources/hub.sql
+#https://open.med.harvard.edu/svn/shrine/releases/1.18.2/code/service/src/main/resources/create_broadcaster_audit_table.sql
+
+
+NOTE:
+Files that have not changed in the shrine folder:
+clean.sh
+determine-adapter-mappings-url.pl
+install-tomcat.sh
+keystore.sh
+shrine-aliases.sh
+ssl_getcert.sh
+ssl_keytool.sh
+tomcat_configure_server_xml.sh
