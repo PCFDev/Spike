@@ -34,14 +34,8 @@ chmod +x *.sh
 
 #########
 echo "[shrine/install.sh] Your SHRINE Environment Variables (see shrine.rc)"
-
-##########
-
-########
-
-javac ../../tsql.java
-
 #######
+
 ./install_prereqs.sh
 ./mssql.sh
 ./install-tomcat.sh
@@ -59,7 +53,7 @@ cd work;
 du -hs
 cd ..
 
-#rm -rf work
+rm -rf work
 
 ##########
 echo "[shrine/install.sh] Disk Space Free After Install Cleanup"
