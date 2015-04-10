@@ -3,8 +3,8 @@
 
 .DS_Store
 .svn
-.log
-.zip
+*.log
+*.zip
 
 
 # User-specific files
