@@ -1,16 +1,13 @@
-$__currentDirectory = (Get-Item -Path ".\" -Verbose).FullName
-$__tempFolder = $__currentDirectory + "\.temp"
-$__sourceCodeRootFolder = $__currentDirectory + "\i2b2core-src"
-$__sourceCodeZipFile = $__currentDirectory + "\i2b2core-src-1704.zip"
+. .\configuration.ps1
+. .\functions.ps1
 
 
-if(Test-Path $__tempFolder){
-	Remove-Item $__tempFolder -recurse
-}
-New-Item $__tempFolder -Type directory -Force
+#Create a directory to work out of
+createTempFolder
 
-.{.\Setup.ps1}
+. .\InstallPrereqs.ps1
 
-.{.\InstallPrereqs.ps1}
+#. .\ExtractSource.ps1
 
-#.{.\ExtractSource.ps1}
+#clean up after ourself
+removeTempFolder

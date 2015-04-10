@@ -1,27 +1,5 @@
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-$__jbossDownloadUrl = "http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip"
-$__jbossServiceDownloadUrl = "http://www.jboss.org/jbossweb/downloads/jboss-native-2-0-10/"
-
-if($global:windows_arch -eq "x64"){
-
-}
-
-
-$__antFolderName = "apache-ant-1.9.4"
-$__antDownloadUrl = "http://mirror.tcpdiag.net/apache//ant/binaries/" + $__antFolderName + "-bin.zip"
-
-$__javaDownloadUrl = ""
-
-if($global:windows_arch -eq "x64"){
-	$__javaDownloadUrl = "http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-windows-x64.exe"
-} else {
-    #NOTE: test this url, if it works we can break out the filename and folder..?
-	$__javaDownloadUrl = "https://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-windows-i586.exe"
-}
-
-$__axisDownloadUrl = "https://www.i2b2.org/software/projects/installer/axis2-1.6.2-war.zip"
-
 $out = &"java.exe" -version 2>&1
 $javaver = $out[0].tostring();
 $javaInstalled = $true
@@ -58,6 +36,13 @@ if($env:JAVA_HOME -eq ""){
     [System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'machine')
     echo "JAVA_HOME environment variable set"
 }
+
+if(![System.Environment]::GetEnvironmentVariable("PATH").Contains($env:JAVA_HOME)){
+
+    echo "Adding JAVA bin to PATH"
+    appedToPath $env:JAVA_HOME + "\bin;"
+}
+
 
 
 #Check it see if ant is installed
@@ -103,40 +88,9 @@ if($env:ANT_HOME -eq ""){
 }
 
 
-if(![System.Environment]::GetEnvironmentVariable("PATH").Contains($env:JAVA_HOME)){
+if(![System.Environment]::GetEnvironmentVariable("PATH").Contains($env:ANT_HOME)){
 
-    echo "Updating Path"
-
-    $__pathToAppend =  $env:JAVA_HOME + "\bin;" + $env:ANT_HOME + "\bin;"
-
-
-    #TODO verify that the current path ends with ;
-
-    echo $__pathToAppend
-
-    [System.Environment]::SetEnvironmentVariable("PATH", $env:PATH + $__pathToAppend, "Machine")
-
-
-    #Refresh env
-    foreach($level in "Machine","User") {
-
-        [Environment]::GetEnvironmentVariables($level).GetEnumerator() | % {
-        
-            # For Path variables, append the new values, if they're not already in there
-            if($_.Name -match 'Path$') { 
-                $_.Value = ($((Get-Content "Env:$($_.Name)") + ";$($_.Value)") -split ';' | Select -unique) -join ';'
-            }
-
-            $_
-
-        } | Set-Content -Path { "Env:$($_.Name)" }
-
-
-    }
-
-   echo "Path Set" 
-   [System.Environment]::GetEnvironmentVariable("PATH")
-
-
+    echo "Adding ANT bin to PATH"
+    appedToPath $env:ANT_HOME + "\bin;"
 }
 
