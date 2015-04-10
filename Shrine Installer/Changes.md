@@ -60,3 +60,25 @@
 
 18. shrine/sqlserver/skel/shrine.xml
 	* changed the jdbc connection string
+
+
+
+SQL Side:
+                update SQL PM Cell Data to localhost
+
+
+Web Side:
+                sqljdbc.jar - copy from JBoss to Tomcat/lib
+                install tomcat to c:\opt\shrine\tomcat (no spacing)
+                server.xml:
+                                Uncomment SSL/TLS Connector
+                                                port="6443"
+                                                protocol="HTTP/1.1"
+                                                Add keystoreFile and keystorePass to 6443 Connector (able to use relative path/does not assume C:)
+                                Edit 6060 redirectPort="6443"
+                shrine.conf:
+                                pmEndpoint url should be localhost:9090
+                                ontEndpoint url should be localhost:9090
+                                crcEndpoint url should be localhost:9090
+                                shrineDatabaseType should be "sqlserver"
+                              (M)  keystore file should be edited to match windows directory and escape chars (\\) added

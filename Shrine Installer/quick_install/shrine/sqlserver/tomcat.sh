@@ -120,7 +120,7 @@ cp -a shrine-webclient ${SHRINE_TOMCAT_HOME}/webapps/
 
 
 echo "[shrine/tomcat.sh] Copy sqljdbc.jar file to the tomcat lib folder"
-cp ../../sqljdbc.jar ${SHRINE_TOMCAT_LIB}
+cp ../../../sqljdbc.jar ${SHRINE_TOMCAT_LIB}
 
 #####
 echo "[shrine/tomcat.sh] Done."
