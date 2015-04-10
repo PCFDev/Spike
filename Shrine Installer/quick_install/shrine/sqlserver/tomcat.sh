@@ -118,6 +118,10 @@ interpolate "SHRINE_SSL_PORT" "$SHRINE_SSL_PORT" > shrine-webclient/js-i2b2/cell
 
 cp -a shrine-webclient ${SHRINE_TOMCAT_HOME}/webapps/
 
+
+echo "[shrine/tomcat.sh] Copy sqljdbc.jar file to the tomcat lib folder"
+cp ../../sqljdbc.jar ${SHRINE_TOMCAT_LIB}
+
 #####
 echo "[shrine/tomcat.sh] Done."
 

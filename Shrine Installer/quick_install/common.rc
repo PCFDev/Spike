@@ -25,12 +25,17 @@ ETH0_IP=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
 # REQUIRED
 ## This installer requires you have an I2B2 installation.
 export SHRINE_IP=$ETH0_IP
+
+
+#ITL added this to simplify i2b2 configuration
+export I2B2_IP_DEFAULT="localhost:9090"
+
 #The IP address of the machine hosting the i2b2 PM cell
-export I2B2_PM_IP=$ETH0_IP
+export I2B2_PM_IP=$I2B2_IP_DEFAULT
 #The IP address of the machine hosting the i2b2 Ontology cell
-export I2B2_ONT_IP=$ETH0_IP
+export I2B2_ONT_IP=$I2B2_IP_DEFAULT
 #The IP address of the machine hosting the i2b2 CRC cell
-export I2B2_CRC_IP=$ETH0_IP
+export I2B2_CRC_IP=$I2B2_IP_DEFAULT
 
 #The port Shrine listens on
 export SHRINE_PORT=6060
