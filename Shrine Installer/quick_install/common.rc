@@ -28,7 +28,7 @@ export SHRINE_IP=$ETH0_IP
 
 
 #ITL added this to simplify i2b2 configuration
-export I2B2_IP_DEFAULT="localhost:9090"
+export I2B2_IP_DEFAULT=localhost:9090
 
 #The IP address of the machine hosting the i2b2 PM cell
 export I2B2_PM_IP=$I2B2_IP_DEFAULT
