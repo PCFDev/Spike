@@ -7,7 +7,7 @@ $__windows_arch = "x64"
 ##############################
 $__currentDirectory = (Get-Item -Path ".\" -Verbose).FullName
 $__tempFolder = $__currentDirectory + "\.temp"
-$__sourceCodeRootFolder = $__currentDirectory + "\i2b2core-src"
+$__sourceCodeRootFolder = $__tempFolder + "\i2b2core-src"
 $__sourceCodeZipFile = $__currentDirectory + "\i2b2core-src-1704.zip"
 
 

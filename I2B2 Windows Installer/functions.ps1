@@ -1,4 +1,6 @@
-﻿Write-Host importing functions
+﻿Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+Write-Host importing functions
 
 
 function testing{
@@ -20,6 +22,23 @@ function createTempFolder{
     removeTempFolder
 
     New-Item $__tempFolder -Type directory -Force
+}
+
+
+function unzip($zipFile, $folderPath, $removeFolder = $false) {
+
+
+    if($removeFolder -eq $true){
+
+        if(Test-Path $folderPath){
+	        Remove-Item $folderPath -recurse
+        }
+    
+        New-Item $folderPath -Type directory -Force
+    }
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folderPath)
+
 }
 
 
@@ -56,4 +75,10 @@ function appendToPath($pathToAppend){
    echo "Path Set" 
    [System.Environment]::GetEnvironmentVariable("PATH")
 
+}
+
+
+
+function replaceInFile($InputFile, $OutputFile, $Pattern, $Replacement){
+    Get-Content $InputFile | Foreach-Object {$_.Replace($Pattern,  $Replacement)} | Set-Content $OutputFile
 }

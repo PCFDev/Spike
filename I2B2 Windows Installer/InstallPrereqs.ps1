@@ -1,8 +1,16 @@
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-$out = &"java.exe" -version 2>&1
-$javaver = $out[0].tostring();
-$javaInstalled = $true
+
+$javaInstalled = $false
+
+try{
+    $out = &"java.exe" -version 2>&1
+    $javaVer = $out[0].tostring();
+    $javaInstalled = ($javaVer -gt "")
+} catch {
+    $javaInstalled = $false
+}
+
 #NOTE: need to truly set if java is installed
 
 if($javaInstalled -eq $false){
