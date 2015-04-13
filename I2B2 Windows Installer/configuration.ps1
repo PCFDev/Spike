@@ -5,11 +5,11 @@ $__windows_arch = "x64"
 ##############################
 #DO NOT EDIT: SYSTEM VARIABLES
 ##############################
+
 $__currentDirectory = (Get-Item -Path ".\" -Verbose).FullName
 $__tempFolder = $__currentDirectory + "\.temp"
-$__sourceCodeRootFolder = $__tempFolder + "\i2b2core-src"
 $__sourceCodeZipFile = $__currentDirectory + "\i2b2core-src-1704.zip"
-
+$__sourceCodeRootFolder = $__tempFolder + "\i2b2core-src"
 
 
 $__jbossDownloadUrl = "http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip"
