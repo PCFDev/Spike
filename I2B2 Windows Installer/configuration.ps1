@@ -38,6 +38,17 @@ if($windows_arch -eq "x64"){
 $__axisDownloadUrl = "https://www.i2b2.org/software/projects/installer/axis2-1.6.2-war.zip"
 
 
+if([Environment]::Is64BitOperatingSystem -eq "True")
+    {
+        $__tomcatDownloadUrl = "http://ftp.wayne.edu/apache/tomcat/tomcat-8/v8.0.21/bin/apache-tomcat-8.0.21-windows-x64.zip"
+    }
+    else
+    {
+        $__tomcatDownloadUrl = "http://ftp.wayne.edu/apache/tomcat/tomcat-8/v8.0.21/bin/apache-tomcat-8.0.21-windows-x86.zip"
+    }
+    
+    
+
 $env:JAVA_HOME="c:\opt\java"
 $env:ANT_HOME="c:\opt\ant"
 $env:JBOSS_HOME="c:\opt\jboss"
