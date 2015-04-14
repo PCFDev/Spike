@@ -93,11 +93,12 @@ if($InstallService -eq $true)
     #Must set a process level environment variable for Powershell to use during this instance
     $env:CATALINA_HOME = "$Env:TOMCAT\shrine\tomcat"
 
-    $env:JAVA_HOME = "C:\Program Files\Java\jdk1.7.0_75"
+    #$env:JAVA_HOME = "C:\Program Files\Java\jdk1.7.0_75"
+    #JAVA_HOME Set in configuration.ps1, Uncomment if configuration.ps1 is incorrect
 
     & "$Env:CATALINA_HOME\bin\service.bat" install
     
-    #& "$Env:CATALINA_HOME\bin\tomcat8.exe" //US//Tomcat8 --DisplayName="Apache Tomcat 8.0"
+    & $Env:CATALINA_HOME\bin\tomcat8 //US//Tomcat8 --DisplayName="Apache Tomcat 8.0"
 
     Set-Service Tomcat8 -StartupType Automatic
 
