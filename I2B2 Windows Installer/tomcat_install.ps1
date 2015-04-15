@@ -65,6 +65,7 @@ Param(
 #If given no argument for install directory, set default directory C:\opt
 if($tomcat_path -eq "")
 {
+    echo "default path set to C:\opt"
     $tomcat_path="C:\opt"
 }
 
@@ -74,6 +75,7 @@ $Env:TOMCAT = $tomcat_path
 
 #Create temp downloads folder
 if(!(Test-Path $Env:TOMCAT\shrine\downloads)){
+    echo "creating temporary download location..."
     mkdir $Env:TOMCAT\shrine\downloads
 }
 
@@ -82,6 +84,7 @@ if(!(Test-Path $Env:TOMCAT\shrine\downloads)){
 if(Test-Path $Env:TOMCAT\shrine\downloads\tomcat.zip){
     Remove-Item $Env:TOMCAT\shrine\downloads\tomcat.zip
 }
+echo "downloading tomcat archive..."
 Invoke-WebRequest $__tomcatDownloadUrl -OutFile $Env:TOMCAT\shrine\downloads\tomcat8.zip
 unzip $Env:TOMCAT\shrine\downloads\tomcat8.zip $Env:TOMCAT\shrine
 if(Test-Path $Env:TOMCAT\shrine\tomcat){
@@ -89,27 +92,29 @@ if(Test-Path $Env:TOMCAT\shrine\tomcat){
     mkdir $Env:TOMCAT\shrine\tomcat
 }
 Copy-Item $Env:TOMCAT\shrine\apache-tomcat-8.0.21\* -Destination $Env:TOMCAT\shrine\tomcat -Container -Recurse
+echo "cleaning up..."
 Remove-Item $Env:TOMCAT\shrine\downloads -Recurse
 Remove-Item $Env:TOMCAT\shrine\apache-tomcat-8.0.21 -Recurse
 
 #This environment variable is required for Tomcat to run and to install as a service
-[Environment]::SetEnvironmentVariable("CATALINA_HOME","$Env:TOMCAT\shrine\tomcat","Machine")
+setEnvironmentVariable("CATALINA_HOME", "$Env:TOMCAT\shrine\tomcat")
 
 #If $InstallService is $true (as default), this will install the Tomcat Windows Service.
 #It will set the service to Automatic startup, rename it to Apache Tomcat 8.0 and start it.
 if($InstallService -eq $true)
 {
-    #Must set a process level environment variable for Powershell to use during this instance
-    $env:CATALINA_HOME = "$Env:TOMCAT\shrine\tomcat"
-
     #$env:JAVA_HOME = "C:\Program Files\Java\jdk1.7.0_75"
     #JAVA_HOME Set in configuration.ps1, Uncomment if configuration.ps1 is incorrect
 
+    echo "installing Tomcat8 service..."
     & "$Env:CATALINA_HOME\bin\service.bat" install
     
     & $Env:CATALINA_HOME\bin\tomcat8 //US//Tomcat8 --DisplayName="Apache Tomcat 8.0"
 
+    echo "setting Tomcat8 service to Automatic and starting..."
     Set-Service Tomcat8 -StartupType Automatic
-
     Start-Service Tomcat8   
 }
+
+
+.\shrine_install.ps1
