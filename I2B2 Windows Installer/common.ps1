@@ -4,7 +4,8 @@ $_SHRINE_VERSION = "1.18.2"
 
 $_I2B2_DOMAIN_ID = "i2b2demo"
 
-$_SHRINE_IP = ""
+$_SHRINE_IP = "localhost"
+$_SHRINE_MSSQL_SERVER = "localhost"
 
 $_NEXUS_URL_BASE = "http://repo.open.med.harvard.edu/nexus/content/groups/public/net/shrine"
 $_SHRINE_SVN_URL_BASE = "https://open.med.harvard.edu/svn/shrine/releases/$_SHRINE_VERSION"
@@ -70,6 +71,15 @@ $_SHRINE_MYSQL_USER = "shrine"
 
 #The password for the MySQL user that Shrine should log in as.
 $_SHRINE_MYSQL_PASSWORD = "demouser"
+
+#The database name for the MSSQL server instance
+$_SHRINE_MSSQL_DB = "shrine"
+
+#The MSSQL user Shrine should log in as.
+$_SHRINE_MSSQL_USER = "shrine_installer"
+
+#The password for the MSSSQL user that Shrine should log in as.
+$_SHRINE_MSSQL_PASSWORD = "demouser"
 
 #The i2b2 user Shrine should use when making queries to an i2b2 hive.
 $_SHRINE_ADAPTER_I2B2_USER = "demo"
