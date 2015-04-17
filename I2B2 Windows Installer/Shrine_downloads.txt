@@ -3,7 +3,7 @@ Download Shrine.war
 
 Download Shrine-Proxy.war
 -Invoke-WebRequest http://repo.open.med.harvard.edu/nexus/content/groups/public/net/shrine/shrine-proxy/1.18.2/shrine-proxy-1.18.2.war  -OutFile C:\opt\shrine\shrine-proxy.war
-
+		   
 Download Shrine-webclient
 	Download Subversion
 	-Invoke-WebRequest http://sourceforge.net/projects/win32svn/files/1.8.11/apache22/svn-win32-1.8.11.zip  -OutFile C:\opt\shrine\subversion.zip
