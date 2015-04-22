@@ -69,7 +69,7 @@ interpolate_file .\shrine\skel\shrine.conf "I2B2_PM_IP" $_I2B2_PM_IP | interpola
     interpolate "SHRINE_ADAPTER_I2B2_PASSWORD" $_SHRINE_ADAPTER_I2B2_PASSWORD |
     interpolate "SHRINE_ADAPTER_I2B2_PROJECT" $_SHRINE_ADAPTER_I2B2_PROJECT |
     interpolate "I2B2_CRC_IP" $_I2B2_CRC_IP | interpolate "SHRINE_NODE_NAME" $_SHRINE_NODE_NAME |
-    interpolate "KEYSTORE_FILE" $_KEYSTORE_FILE | interpolate "KEYSTORE_PASSWORD" $_KEYSTORE_PASSWORD |
+    interpolate "KEYSTORE_FILE" (escape $_KEYSTORE_FILE) | interpolate "KEYSTORE_PASSWORD" $_KEYSTORE_PASSWORD |
     interpolate "KEYSTORE_ALIAS" $_KEYSTORE_ALIAS > $_SHRINE_SETUP\ready\shrine.conf
 
 #Copy relevant files to proper locations
